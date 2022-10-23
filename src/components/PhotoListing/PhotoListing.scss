@@ -1,0 +1,8 @@
+.photosWrapper {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  gap: 16px;
+  margin-top: 50px;
+}

@@ -1,0 +1,47 @@
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  min-height: 500px;
+  background: url("../../images/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @include flexCenter();
+}
+
+.search-input {
+  padding-left: 10px;
+  height: 40px;
+  width: 30%;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  color: gray;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.search-button {
+  margin-left: -40px;
+  height: 40px;
+  width: 40px;
+  border-radius: 10px;
+  border: none;
+  font-size: 30px;
+  color: gray;
+
+  @include flexCenter();
+
+  &:hover {
+    transition: 0.2s;
+    transform: scale(0.9);
+    color: green;
+    cursor: pointer;
+  }
+}
