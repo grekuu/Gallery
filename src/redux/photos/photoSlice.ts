@@ -1,8 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
 import photoApi from "../../common/api/photoApi";
+import photoIdApi from "../../common/api/photoIdApi";
+import { PhotoProps } from "../../components/PhotoCard/Photo.types";
 
-export const fetchAsyncPhotos = createAsyncThunk<any>(
+export const fetchAsyncPhotos = createAsyncThunk<PhotoProps>(
   "photos/fetchAsyncPhotos",
   async () => {
     const query = "dog";
@@ -11,19 +12,29 @@ export const fetchAsyncPhotos = createAsyncThunk<any>(
   }
 );
 
+export const fetchAsyncPhotoDetail = createAsyncThunk(
+  "photos/fetchAsyncPhotoDetail",
+  async (id: string) => {
+    const response = await photoIdApi.get(`${id}`);
+    return response.data;
+  }
+);
+
 const initialState = {
   photos: {},
+  selectedPhoto: {},
 };
 
 const photoSlice = createSlice({
   name: "photos",
   initialState,
   reducers: {
-    addPhotos: (state, action: PayloadAction<string[]>) => {
-      state.photos = action.payload;
+    removeSelectedPhoto: (state) => {
+      state.selectedPhoto = {};
     },
   },
   extraReducers: (builder) => {
+    //photos
     builder.addCase(fetchAsyncPhotos.pending, () => {
       console.log("Pending");
     });
@@ -34,9 +45,15 @@ const photoSlice = createSlice({
     builder.addCase(fetchAsyncPhotos.rejected, () => {
       console.log("Rejected");
     });
+    //photo detail
+    builder.addCase(fetchAsyncPhotoDetail.fulfilled, (state, { payload }) => {
+      console.log("Fetched successfully");
+      state.selectedPhoto = payload;
+    });
   },
 });
 
-export const { addPhotos } = photoSlice.actions;
+export const { removeSelectedPhoto } = photoSlice.actions;
 export const getAllPhotos = (state: any) => state.photos.photos;
+export const getSelectedPhoto = (state: any) => state.photos.selectedPhoto;
 export default photoSlice.reducer;
