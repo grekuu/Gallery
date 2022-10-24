@@ -1,21 +1,26 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import photoApi from "../../common/api/photoApi";
-import photoIdApi from "../../common/api/photoIdApi";
-import { PhotoProps } from "../../components/PhotoCard/Photo.types";
 
-export const fetchAsyncPhotos = createAsyncThunk<PhotoProps>(
+export const fetchAsyncPhotos = createAsyncThunk(
   "photos/fetchAsyncPhotos",
-  async () => {
-    const query = "dog";
-    const response = await photoApi.get(`?query=${query}`);
+  async (query: string) => {
+    const response = await photoApi.get(`/search?query=${query}`);
     return response.data;
   }
 );
 
+// export const fetchAsyncPhotos = createAsyncThunk(
+//   "photos/fetchAsyncPhotos",
+//   async (query: string) => {
+//     const response = await photoApi.get(`/search?query=${query}`);
+//     return response.data;
+//   }
+// );
+
 export const fetchAsyncPhotoDetail = createAsyncThunk(
   "photos/fetchAsyncPhotoDetail",
   async (id: string) => {
-    const response = await photoIdApi.get(`${id}`);
+    const response = await photoApi.get(`/photos/${id}`);
     return response.data;
   }
 );

@@ -8,7 +8,7 @@ function Home() {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    dispatch(fetchAsyncPhotos());
+    dispatch(fetchAsyncPhotos(""));
   }, [dispatch]);
 
   return (
