@@ -14,6 +14,12 @@ function Header() {
     dispatch(fetchAsyncPhotos(query));
   }
 
+  const handleKeyDown = (event: any) => {
+    if (event.key === "Enter") {
+      dispatch(fetchAsyncPhotos(query));
+    }
+  };
+
   useEffect(() => {
     dispatch(fetchAsyncPhotos("dog"));
   }, [dispatch]);
@@ -25,6 +31,7 @@ function Header() {
         className="search-input"
         placeholder="Search for photos"
         onChange={(e) => setQuery(e.target.value)}
+        onKeyDown={handleKeyDown}
       />
       <button className="search-button" onClick={handleSearch}>
         <AiOutlineSearch />
