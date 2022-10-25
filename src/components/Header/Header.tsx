@@ -3,7 +3,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { fetchAsyncPhotos } from "../../redux/photos/photoSlice";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/store";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Header() {
   const dispatch = useDispatch<AppDispatch>();
@@ -13,6 +13,10 @@ function Header() {
   function handleSearch() {
     dispatch(fetchAsyncPhotos(query));
   }
+
+  useEffect(() => {
+    dispatch(fetchAsyncPhotos("dog"));
+  }, [dispatch]);
 
   return (
     <div className="header">
