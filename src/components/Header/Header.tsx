@@ -24,7 +24,7 @@ function Header() {
 
   useEffect(() => {
     dispatch(fetchAsyncPhotos(fullQuery));
-  }, [dispatch]);
+  }, [dispatch, fullQuery]);
 
   return (
     <div className="header">
