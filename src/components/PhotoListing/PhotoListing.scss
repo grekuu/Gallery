@@ -5,4 +5,19 @@
   justify-items: center;
   gap: 16px;
   margin-top: 50px;
+
+  button {
+    margin-bottom: 16px;
+    width: 150px;
+    height: 40px;
+    cursor: pointer;
+    border: 2px solid black;
+    font-weight: bold;
+
+    &:hover {
+      transition: 0.3s;
+      background-color: black;
+      color: white;
+    }
+  }
 }

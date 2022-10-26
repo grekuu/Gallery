@@ -27,6 +27,7 @@ function PhotoListing() {
           return <PhotoCard key={photo.id} {...photo} />;
         })}
       <button onClick={handlePrevious}>Previous</button>
+      <div></div>
       <button onClick={handleNext}>Next</button>
     </div>
   );
