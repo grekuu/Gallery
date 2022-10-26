@@ -10,18 +10,20 @@ function Header() {
 
   const [query, setQuery] = useState<string>("dog");
 
+  const fullQuery = `/search?page=1&per_page=15&query=${query}`;
+
   function handleSearch() {
-    dispatch(fetchAsyncPhotos(query));
+    dispatch(fetchAsyncPhotos(fullQuery));
   }
 
   const handleKeyDown = (event: any) => {
     if (event.key === "Enter") {
-      dispatch(fetchAsyncPhotos(query));
+      dispatch(fetchAsyncPhotos(fullQuery));
     }
   };
 
   useEffect(() => {
-    dispatch(fetchAsyncPhotos("dog"));
+    dispatch(fetchAsyncPhotos(fullQuery));
   }, [dispatch]);
 
   return (

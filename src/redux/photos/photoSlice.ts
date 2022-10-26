@@ -3,8 +3,8 @@ import photoApi from "../../common/api/photoApi";
 
 export const fetchAsyncPhotos = createAsyncThunk(
   "photos/fetchAsyncPhotos",
-  async (query: string) => {
-    const response = await photoApi.get(`/search?query=${query}`);
+  async (fullQuery: string) => {
+    const response = await photoApi.get(`${fullQuery}`);
     return response.data;
   }
 );
