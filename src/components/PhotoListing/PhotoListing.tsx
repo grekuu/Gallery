@@ -21,14 +21,21 @@ function PhotoListing() {
   }
 
   return (
-    <div className="photosWrapper">
-      {photosArray.photos &&
-        photosArray.photos.map((photo: PhotoProps) => {
-          return <PhotoCard key={photo.id} {...photo} />;
-        })}
-      <button onClick={handlePrevious}>Previous</button>
-      <div></div>
-      <button onClick={handleNext}>Next</button>
+    <div>
+      <div className="photosWrapper">
+        {photosArray.photos &&
+          photosArray.photos.map((photo: PhotoProps) => {
+            return <PhotoCard key={photo.id} {...photo} />;
+          })}
+      </div>
+      <div className="flex-btn">
+        <button onClick={handlePrevious} className="page-btn">
+          Previous
+        </button>
+        <button onClick={handleNext} className="page-btn">
+          Next
+        </button>
+      </div>
     </div>
   );
 }

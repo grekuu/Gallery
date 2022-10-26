@@ -5,19 +5,32 @@
   justify-items: center;
   gap: 16px;
   margin-top: 50px;
+}
 
-  button {
-    margin-bottom: 16px;
-    width: 150px;
-    height: 40px;
-    cursor: pointer;
-    border: 2px solid black;
-    font-weight: bold;
+.page-btn {
+  margin-bottom: 16px;
+  width: 150px;
+  height: 40px;
+  cursor: pointer;
+  border: 2px solid black;
+  font-weight: bold;
 
-    &:hover {
-      transition: 0.3s;
-      background-color: black;
-      color: white;
-    }
+  &:hover {
+    transition: 0.3s;
+    background-color: black;
+    color: white;
+  }
+}
+
+.flex-btn {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px;
+}
+
+@media only screen and (max-width: 600px) {
+  .page-btn {
+    width: 100px;
+    height: 30px;
   }
 }
