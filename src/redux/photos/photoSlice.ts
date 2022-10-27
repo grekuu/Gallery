@@ -9,14 +9,6 @@ export const fetchAsyncPhotos = createAsyncThunk(
   }
 );
 
-// export const fetchAsyncPhotos = createAsyncThunk(
-//   "photos/fetchAsyncPhotos",
-//   async (query: string) => {
-//     const response = await photoApi.get(`/search?query=${query}`);
-//     return response.data;
-//   }
-// );
-
 export const fetchAsyncPhotoDetail = createAsyncThunk(
   "photos/fetchAsyncPhotoDetail",
   async (id: string) => {
@@ -40,19 +32,13 @@ const photoSlice = createSlice({
   },
   extraReducers: (builder) => {
     //photos
-    builder.addCase(fetchAsyncPhotos.pending, () => {
-      console.log("Pending");
-    });
+    builder.addCase(fetchAsyncPhotos.pending, () => {});
     builder.addCase(fetchAsyncPhotos.fulfilled, (state, { payload }) => {
-      console.log("Fetched successfully");
       state.photos = payload;
     });
-    builder.addCase(fetchAsyncPhotos.rejected, () => {
-      console.log("Rejected");
-    });
+    builder.addCase(fetchAsyncPhotos.rejected, () => {});
     //photo detail
     builder.addCase(fetchAsyncPhotoDetail.fulfilled, (state, { payload }) => {
-      console.log("Fetched successfully");
       state.selectedPhoto = payload;
     });
   },

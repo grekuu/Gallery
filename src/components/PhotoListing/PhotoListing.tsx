@@ -7,11 +7,11 @@ import "./PhotoListing.scss";
 
 function PhotoListing() {
   const photosArray = useSelector(getAllPhotos);
-  console.log(photosArray);
+
   const dispatch = useDispatch<AppDispatch>();
+  const previousPage = photosArray.prev_page;
 
   function handlePrevious() {
-    const previousPage = photosArray.prev_page;
     dispatch(fetchAsyncPhotos(previousPage));
   }
 
@@ -29,10 +29,13 @@ function PhotoListing() {
           })}
       </div>
       <div className="flex-btn">
-        <button onClick={handlePrevious} className="page-btn">
+        <button
+          onClick={handlePrevious}
+          className={previousPage ? "page-btn" : "page-btn hide-btn"}
+        >
           Previous
         </button>
-        <button onClick={handleNext} className="page-btn">
+        <button onClick={handleNext} className="page-btn flex-right">
           Next
         </button>
       </div>

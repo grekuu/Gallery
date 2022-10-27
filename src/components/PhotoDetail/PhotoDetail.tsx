@@ -13,7 +13,6 @@ function PhotoDetail() {
   const { id } = useParams();
   const dispatch = useDispatch<AppDispatch>();
   const data = useSelector(getSelectedPhoto);
-  console.log(data);
 
   let renderPhoto;
 
