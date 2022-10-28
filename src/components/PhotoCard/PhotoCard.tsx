@@ -6,7 +6,12 @@ function PhotoCard({ alt, src, id }: PhotoProps) {
   return (
     <div className="photo-card">
       <Link to={`/${id}`}>
-        <img src={src.medium} alt={alt} className="photo-image" />
+        <img
+          src={src.medium}
+          alt={alt}
+          className="photo-image"
+          loading="lazy"
+        />
       </Link>
     </div>
   );

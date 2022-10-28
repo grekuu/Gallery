@@ -24,7 +24,8 @@ function Header() {
 
   useEffect(() => {
     dispatch(fetchAsyncPhotos(fullQuery));
-  }, [dispatch, fullQuery]);
+    //eslint-disable-next-line
+  }, [dispatch]);
 
   return (
     <div className="header">

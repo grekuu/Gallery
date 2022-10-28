@@ -18,7 +18,7 @@ function PhotoDetail() {
 
   renderPhoto = data.src ? (
     <div className="movie-detail-container">
-      <img src={data.src.large} alt={data.alt} />
+      <img src={data.src.large} alt={data.alt} loading="lazy" />
       <a href={data.photographer_url} rel="noreferrer" target="_blank">
         {data.photographer}{" "}
       </a>
