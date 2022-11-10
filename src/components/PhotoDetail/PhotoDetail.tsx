@@ -38,10 +38,7 @@ function PhotoDetail() {
   }, [dispatch, id]);
 
   return (
-    <div
-      className="movie-detail-container"
-      style={{ backgroundColor: data.avg_color }}
-    >
+    <div className="movie-detail-container">
       <Link to={`/`} style={{ position: "absolute", top: "0", left: "0" }}>
         <AiOutlineArrowLeft className="arrow-left-icon" />
       </Link>
