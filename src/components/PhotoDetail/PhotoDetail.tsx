@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import {
@@ -8,6 +8,7 @@ import {
 } from "../../redux/photos/photoSlice";
 import { AppDispatch } from "../../redux/store";
 import "./PhotoDetail.scss";
+import { AiOutlineArrowLeft } from "react-icons/ai";
 
 function PhotoDetail() {
   const { id } = useParams();
@@ -41,6 +42,9 @@ function PhotoDetail() {
       className="movie-detail-container"
       style={{ backgroundColor: data.avg_color }}
     >
+      <Link to={`/`} style={{ position: "absolute", top: "0", left: "0" }}>
+        <AiOutlineArrowLeft className="arrow-left-icon" />
+      </Link>
       {renderPhoto}
     </div>
   );
